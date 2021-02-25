@@ -1,42 +1,15 @@
-import { useState, useEffect, useContext } from "react";
-import { ChallengesContext } from "../contexts/ChallengesContexts";
+import { useContext } from "react";
+import { CountdownContext } from "../contexts/CountdownContexts";
 import styles from "../styles/components/Countdown.module.css";
 
-let countdownTimeout: NodeJS.Timeout;
 
 export function Countdown() {
-  const {startNewChallenge} = useContext(ChallengesContext)
-  const [time, setTime] = useState(25 * 60);
-  const [isActive, setIsActive] = useState(false);
-  const [hasFinished, setHasFinished] = useState(false);
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
+  const { minutes, seconds, hasFinished, isActive, resetCountdown, startCountdown} = useContext(CountdownContext)
 
   //padStart se a string n tiver 2 caracteres ele vai preencher o restante a esquerda com 0
+  // Não foi colocado no contexto pq aqui formata o minuto e o segundo para mostrar de uma maneira diferente, já que quem exige essa mudança é o layout e não a regra de negocio
   const [minuteLeft, minuteRight] = String(minutes).padStart(2, "0").split("");
   const [secondLeft, secondRight] = String(seconds).padStart(2, "0").split("");
-
-  function startCountdown() {
-    setIsActive(true);
-  }
-
-  function resetCountdown() {
-    clearTimeout(countdownTimeout);
-    setIsActive(false);
-    setTime(25 * 60);
-  }
-
-  useEffect(() => {
-    if (isActive && time > 0) {
-      countdownTimeout = setTimeout(() => {
-        setTime(time - 1);
-      }, 1000);
-    } else if (isActive && time === 0) {
-      setHasFinished(true);
-      setIsActive(false);
-      startNewChallenge()
-    }
-  }, [isActive, time]);
 
   return (
     <div>
