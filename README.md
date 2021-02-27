@@ -13,16 +13,26 @@
  <img  src="https://img.shields.io/github/package-json/dependency-version/Luksdantas/ReactJS-MoveIt/dev/typescript" alt="Typescript Version">
 </p>
 
-<p align="center">
- <a href="#objetivo">Objetivo</a> •
- <a href="#roadmap">Roadmap</a> • 
- <a href="#tecnologias">Tecnologias</a> • 
- <a href="#contribuicao">Contribuição</a> • 
- <a href="#licenc-a">Licença</a> • 
- <a href="#autor">Autor</a>
-</p>
 
 <h1>:rocket: Getting started</h1>
+
+```bash
+
+# Clone this repository
+$ git clone https://github.com/Luksdantas/ReactJS-MoveIt.git
+
+# Access the project folder cmd/terminal
+$ cd ReactJS-MoveIt
+
+# install the dependencies
+$ npm install
+
+# Run the application in development mode
+$ npm run dev
+
+# The application will open on the port: 3000 - go to http://localhost:3000
+
+```
 
 <h1>:bookmark_tabs: License</h1>
  <img  src="https://img.shields.io/github/license/Luksdantas/ReactJS-MoveIt" alt="License">
