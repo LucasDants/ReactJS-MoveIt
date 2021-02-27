@@ -13,6 +13,12 @@
  <img  src="https://img.shields.io/github/package-json/dependency-version/Luksdantas/ReactJS-MoveIt/dev/typescript" alt="Typescript Version">
 </p>
 
+<h1>:memo:About</h1>
+<p>Move It is a project developed during the <a href="https://nextlevelweek.com/">Next Level Week</a> presented by <a href="https://www.linkedin.com/school/rocketseat/">Rockeseat</a>. This project uses Pomodore Technique to remind you to exercise after 25 min of work/study on computer and if you finish the exercises you will win experience to level up.</p>
+
+<h1>:art:Layout</h1>
+ <img  src="https://github.com/Luksdantas/ReactJS-MoveIt/blob/main/screenshots/home.png" alt="Home Screenshot">
+ <img  src="https://github.com/Luksdantas/ReactJS-MoveIt/blob/main/screenshots/homeChallenge.png" alt="Home Challenge Screenshot">
 
 <h1>:rocket: Getting started</h1>
 
@@ -36,3 +42,5 @@ $ npm run dev
 
 <h1>:bookmark_tabs: License</h1>
  <img  src="https://img.shields.io/github/license/Luksdantas/ReactJS-MoveIt" alt="License">
+ 
+ <p>Made with :heart: by Lucas Dantas 👋🏽 <a href="https://www.linkedin.com/in/luksdantas/">Get in Touch!</a></p>
