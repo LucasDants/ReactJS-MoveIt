@@ -46,7 +46,7 @@ export default function Home(props: HomeProps) {
 }
 
 //so funciona no pages, manipular quais dados são passado da camada do next pra camada do frontend
-// no metodo faz essa chamada no server node e antes da tela ser construída
+// no método faz essa chamada no server node e antes da tela ser construída
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { level, currentExperience, challengesCompleted } = context.req.cookies;
 

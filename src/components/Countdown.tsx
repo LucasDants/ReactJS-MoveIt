@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { CountdownContext } from "../contexts/CountdownContexts";
 import styles from "../styles/components/Countdown.module.css";
+import { CountdownButton } from "./CountdownButton";
 
 
 export function Countdown() {
-  const { minutes, seconds, hasFinished, isActive, resetCountdown, startCountdown} = useContext(CountdownContext)
+  const {minutes, seconds} = useContext(CountdownContext)
 
   //padStart se a string n tiver 2 caracteres ele vai preencher o restante a esquerda com 0
   // Não foi colocado no contexto pq aqui formata o minuto e o segundo para mostrar de uma maneira diferente, já que quem exige essa mudança é o layout e não a regra de negocio
@@ -25,31 +26,7 @@ export function Countdown() {
         </div>
       </div>
       <div>
-        {hasFinished ? (
-          <button disabled className={styles.countdownButton}>
-            Ciclo encerrado
-          </button>
-        ) : (
-          <>
-            {isActive ? (
-              <button
-                type="button"
-                className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
-                onClick={resetCountdown}
-              >
-                Abandonar ciclo
-              </button>
-            ) : (
-              <button
-                type="button"
-                className={styles.countdownButton}
-                onClick={startCountdown}
-              >
-                Iniciar um ciclo
-              </button>
-            )}
-          </>
-        )}
+        <CountdownButton />
       </div>
     </div>
   );
