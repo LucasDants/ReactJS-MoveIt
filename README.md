@@ -19,6 +19,7 @@
 <h1>:art:Layout</h1>
  <img  src="https://github.com/Luksdantas/ReactJS-MoveIt/blob/main/screenshots/home.png" alt="Home Screenshot">
  <img  src="https://github.com/Luksdantas/ReactJS-MoveIt/blob/main/screenshots/homeChallenge.png" alt="Home Challenge Screenshot">
+ <img  src="https://github.com/Luksdantas/ReactJS-MoveIt/blob/main/screenshots/homeLevelUp.png" alt="Home Level Up Screenshot">
 
 <h1>:rocket: Getting started</h1>
 
