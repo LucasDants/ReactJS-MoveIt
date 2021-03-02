@@ -14,6 +14,13 @@ export function LevelUpModal() {
               <img src="/icons/close.svg" alt="Fechar modal"/>
           </button>
       </div>
+        <a 
+          className={styles.twitterButton}
+          target="__blank"
+          href={`https://twitter.com/intent/tweet?text=Avancei para o nível 2 no MoveIt. http://localhost:3000`}>
+          Compartilhar no Twitter 
+          <img src="icons/twitter.svg" alt="twitter-icon"/>
+        </a>
     </div>
   );
 }

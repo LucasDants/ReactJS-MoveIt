@@ -1,0 +1,81 @@
+.container {
+    height: 100vh; /*100% é diferente, pq ele tenta adaptar 100% do conteudo disponivel */
+    width: 100%;
+    margin: 0 auto;
+    padding: 2.5rem 0rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #5965E0 url('/assets/banner.svg') no-repeat center left;
+    background-size: 700px;
+}
+
+.signInContainer { 
+    grid-column: 2;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    max-width: 400px;
+    padding: 2rem 2rem;
+}
+
+.signInContainer h1 {
+    margin-top: 5rem;
+    color: var(--white);
+}
+
+.signInContainer p {
+    color: var(--text-highlight);
+}
+
+.signInContainer p {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2rem;
+}
+
+.signInContainer p img {
+    margin-right: 1rem;
+}
+
+.signInInput {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.signInInput input {
+    background-image: linear-gradient(to right,var(--blue-dark),var(--blue-dark), var(--blue));
+    padding: 1rem 0 1rem 1.5rem;
+    border: 0;
+    color: var(--white);
+    width: 80%;
+    outline: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+
+}
+
+.signInInput input::placeholder {
+    color: var(--text-highlight);
+}
+
+.signInInput input:hover {
+    outline: 1px solid var(--blue-dark);
+}
+
+.signInInput button {
+    background: var(--blue-dark);
+    border: none;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
+@media(max-width: 1000px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+}

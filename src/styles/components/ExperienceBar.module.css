@@ -26,3 +26,9 @@ span.currentExperience {
     top: 12px;
     transform: translateX(-50%); /*centralizar o texto, tendo como base o meio da palavra*/
 }
+
+@media(max-width: 700px) {
+    .experienceBar {
+        margin-bottom: 1.5rem;
+    }
+}

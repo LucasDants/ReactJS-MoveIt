@@ -7,6 +7,7 @@
   left: 0;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -16,7 +17,8 @@
   width: 100%;
   max-width: 400px;
   padding: 2rem 3rem;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   text-align: center;
   position: relative;
@@ -48,4 +50,36 @@
   background: transparent;
   border: 0;
   font-size: 0px; /*para deixar o outline correto do botão quando só tem 1 icone dentro*/
+}
+
+.twitterButton {
+    width: 100%;
+    max-width: 400px;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-top: 2px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: var(--white);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+    color: var(--blue-twitter);
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.twitterButton:hover {
+    background: var(--blue-twitter);
+    color: var(--white);
+}
+
+.twitterButton:hover img {
+  filter:  brightness(0) invert(1); 
+}
+
+.twitterButton img {
+  margin-left: 0.5rem;
 }

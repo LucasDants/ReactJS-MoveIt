@@ -1,60 +1,80 @@
 import Head from "next/head";
 import { GetServerSideProps } from "next";
+import { useRouter } from 'next/router'
+import axios from 'axios'
 
-import { CompletedChallenges } from "../components/CompletedChallenges";
-import { Countdown } from "../components/Countdown";
-import { ExperienceBar } from "../components/ExperienceBar";
-import { Profile } from "../components/Profile";
+import styles from "../styles/pages/SignIn.module.css";
+import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
-import styles from "../styles/pages/Home.module.css";
-import { ChallengeBox } from "../components/ChallengeBox";
-import { CountdownProvider } from "../contexts/CountdownContexts";
-import { ChallengesProvider } from "../contexts/ChallengesContexts";
-
-//só a home page precisa do countdown e só alguns componentes dela precisam
-
-interface HomeProps {
-  level: number
-  currentExperience: number
-  challengesCompleted: number
+interface SignInProps {
+  username: string
+  userImage: string
 }
 
-export default function Home(props: HomeProps) {
+export default function SignIn(props: SignInProps) {
+  const [username, setUsername] = useState('')
+  const [hasError, setHasError] = useState(false)
+  const router = useRouter()
+
+
+    useEffect(() => {
+      if(props.username && props.userImage) {
+        setUsername(props.username)
+      }
+    }, [])
+
+  function signIn() {
+    if(props.username && props.userImage) {
+      router.push('/home')
+    }
+
+    setHasError(false)
+    const url = `https://api.github.com/users/${username}`
+    axios.get(url).then(response => {
+      Cookies.set("username", response.data.login)
+      Cookies.set("userImage", response.data.avatar_url)
+      router.push('/home')
+    }).catch(err => {
+      setHasError(true)
+    })
+  }
+
   return (
-    <ChallengesProvider level={props.level} currentExperience={props.currentExperience} challengesCompleted={props.challengesCompleted}>
       <div className={styles.container}>
         <Head>
           <title>Início | move.it</title>
         </Head>
-        <ExperienceBar />
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
+        <div className={styles.signInContainer}>
 
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
+          <img src="/logo-full.svg" alt=""/>
+          <h1>Bem-vindo</h1>
+          <p> 
+            <img src="/icons/github.svg" alt="" />
+            Faça login com seu o Github para começar
+          </p>
+
+          <div className={styles.signInInput}>
+            <input type="text" placeholder="Digite seu username" value={username} onChange={event => setUsername(event.target.value)}/>
+            <button type="button" onClick={signIn} style={username ? { background: "#4CD62B"} : {}}>
+                <img src="/icons/arrow-left.svg" alt="arrow-left"/>
+            </button>
+          </div>
+          {
+            hasError && <p>Erro ao encontrar o perfil do Github!</p>
+          }
+        </div>
       </div>
-    </ChallengesProvider>
   );
 }
 
-//so funciona no pages, manipular quais dados são passado da camada do next pra camada do frontend
-// no método faz essa chamada no server node e antes da tela ser construída
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { level, currentExperience, challengesCompleted } = context.req.cookies;
+  const { username, userImage } = context.req.cookies;
 
   return {
     props: {
-      level: Number(level ?? 1),
-      currentExperience: Number(currentExperience ?? 0),
-      challengesCompleted: Number(challengesCompleted ?? 0),
+      username,
+      userImage,
     },
   };
 };
