@@ -73,8 +73,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      username,
-      userImage,
+      username: username ?? '',
+      userImage: userImage ?? '',
     },
   };
 };
